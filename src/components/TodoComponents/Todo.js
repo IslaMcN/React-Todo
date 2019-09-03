@@ -1,8 +1,14 @@
 import React from 'react';
-import Checkbox from './Checkbox';
+import styled from 'styled-components';
 
-// const Todo = ({ todo, remove}) => {
-//     return ( <Checkbox onClick = "remove (todo.id)">{todo.text}</Checkbox>)
-// }
+const List = styled.li`
+    list-style-type: none;
+    display: flex;
 
-// export default Todo;
+    `;
+
+const Todo = ({ todo, remove}) => {
+    return ( <List >{todo.text}</List>)
+}
+
+export default Todo;

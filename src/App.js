@@ -2,7 +2,18 @@ import React from 'react';
 import TodoForm from '../src/components/TodoComponents/TodoForm';
 import TodoList from '../src/components/TodoComponents/TodoList';
 import Title from '../src/components/TodoComponents/Title';
+import styled from 'styled-components';
 
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 50%;
+  height: 100%;
+  color: #A2C551;
+  
+
+  `;
 
 window.id = 0;
 
@@ -21,22 +32,20 @@ class App extends React.Component {
     this.state.data.push(todo);
     this.setState({data: this.state.data});
   }
-  handleRemove(id){
-    const remainder = this.state.data.filter((todo) => {
-      if(todo.id !== id) return todo;
-    });
-    this.setState({data: remainder});
-  }
+  handleCheckboxChange = event => 
+  this.setState({ checked: event.target.checked });
+  
+  
   render() {
     return (
-      <div>
+      <Div>
         <Title />
         <TodoForm addTodo={this.addTodo.bind(this)} />
         <TodoList
           todos={this.state.data}
-          remove={this.handleRemove.bind(this)}
+          remove={this.handleCheckboxChange}
           />
-      </div>
+      </Div>
     );
   }
 }
